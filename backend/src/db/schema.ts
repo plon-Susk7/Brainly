@@ -9,7 +9,7 @@ const UserSchema = new Schema({
     password: String
 });
 
-const Content = new Schema({
+const ContentSchema = new Schema({
     type : String,
     link : String,
     title : String,
@@ -17,9 +17,15 @@ const Content = new Schema({
     userId: {type:mongoose.Types.ObjectId,ref:"User",required:true}
 })
 
+const LinkSchema = new Schema({
+    hash : String,
+    userId : {type:mongoose.Types.ObjectId,ref:"User",required:true,unique:true}
+})
+
 
 const userModel = mongoose.model("User",UserSchema);
-const contentModel = mongoose.model("Content",Content);
+const contentModel = mongoose.model("Content",ContentSchema);
+const LinkModel = mongoose.model("Link",LinkSchema);
 
 
 export {userModel,contentModel};
