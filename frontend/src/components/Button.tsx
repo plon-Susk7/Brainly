@@ -26,7 +26,7 @@ export const Button = (props: ButtonProps) => {
         <button
             type='button'
             className={`${baseClass} ${variantClass} ${sizeClass}`}
-        >{props.startIcon && props.startIcon}{props.text}</button>
+        >{props.startIcon && props.startIcon}{props.text}{props.endIcon && props.endIcon}</button>
     </>
 }
 
