@@ -28,4 +28,4 @@ const contentModel = mongoose.model("Content",ContentSchema);
 const LinkModel = mongoose.model("Link",LinkSchema);
 
 
-export {userModel,contentModel};
+export {userModel,contentModel,LinkModel};
