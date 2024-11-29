@@ -2,12 +2,17 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import {userRouter} from "./routes/user";
+import {contentRouter} from "./routes/content";
+
+import { userAuth } from "./auth";
 
 dotenv.config();
 const app = express();
 
 app.use(express.json());
 app.use("/api/v1",userRouter);
+
+app.use("/api/v1",userAuth,contentRouter);
 
 async function main(){
     await mongoose.connect(process.env.MONGO_URI as string);

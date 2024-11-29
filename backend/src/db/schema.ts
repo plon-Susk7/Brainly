@@ -5,12 +5,21 @@ import mongoose, {Schema} from "mongoose";
 // Password should be 8 to 20 letters, should have atleast one uppercase, one lowercase, one special character, one number
 
 const UserSchema = new Schema({
-    username: String,
+    username: {type:String,unique:true},
     password: String
 });
 
+const Content = new Schema({
+    type : String,
+    link : String,
+    title : String,
+    tag : [String],
+    userId: {type:mongoose.Types.ObjectId,ref:"User",required:true}
+})
+
 
 const userModel = mongoose.model("User",UserSchema);
+const contentModel = mongoose.model("Content",Content);
 
 
-export {userModel};
+export {userModel,contentModel};
