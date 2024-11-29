@@ -1,14 +1,16 @@
 
-import { Button } from './components/Button'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlusSquare } from "@fortawesome/free-regular-svg-icons";
+// import { Button } from './components/Button'
+import { Sidebar } from './components/Sidebar';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faPlusSquare } from "@fortawesome/free-regular-svg-icons";
 import './App.css'
 
 function App() {
 
   return (
     <>
-      <Button variant="primary" size="md" onClick={()=>{}} text={"Add Content"} startIcon={<FontAwesomeIcon icon={faPlusSquare}/>}/>
+      <Sidebar/>
+      {/* <Button variant="primary" size="md" onClick={()=>{}} text={"Add Content"} startIcon={<FontAwesomeIcon icon={faPlusSquare}/>}/> */}
     </>
   )
 }
