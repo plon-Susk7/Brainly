@@ -25,7 +25,6 @@ const signUp = async (req:any,res:any) => {
         res.status(400).json({message:error.issues});
         return
     }
-
     const hashedPassword = bcrypt.hashSync(password,2);
 
     const newUser = new userModel({
