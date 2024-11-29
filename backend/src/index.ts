@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import {userRouter} from "./routes/user";
 import {contentRouter} from "./routes/content";
+import { linkRouter } from "./routes/link";
 
 import { userAuth } from "./auth";
 
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use("/api/v1",userRouter);
 
 app.use("/api/v1",userAuth,contentRouter);
+app.use("/api/v1",userAuth,linkRouter);
 
 async function main(){
     await mongoose.connect(process.env.MONGO_URI as string);

@@ -1,4 +1,4 @@
-import { LinkModel } from "../db/schema";
+import { LinkModel,contentModel, userModel } from "../db/schema";
 
 
 export const shareLink = async (req:any,res:any) => {
@@ -30,4 +30,23 @@ export const shareLink = async (req:any,res:any) => {
 
 }
 
+export const getLink = async (req:any,res:any) => {
+    const hash = req.params.hash;
 
+    const link = await LinkModel.findOne({hash:hash});
+    
+    if(link){
+
+        const user = await userModel.find({_id : link.userId});
+
+        const content = await contentModel.find({userId:link.userId});
+
+        res.status(200).json({
+            username : user[0].username,
+            content : content
+        })
+    }else{
+        res.status(500).json({message:"Error finding the link"})
+    }
+
+}
