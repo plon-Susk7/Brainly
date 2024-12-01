@@ -22,7 +22,7 @@ export const Body = () => {
     },[]);
 
     const projects = data.map((temp)=>{
-        return <ProjectCards id={temp['_id']} title={temp['title']} type={temp['type']} description={temp['description']} date={temp['date']}/>  
+        return <ProjectCards key = {temp['_id']} id={temp['_id']} title={temp['title']} type={temp['type']} description={temp['description']} date={temp['date']}/>  
     })
 
     return(

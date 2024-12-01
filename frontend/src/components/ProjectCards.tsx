@@ -3,7 +3,7 @@ import { Twitter,VideoLabel,Article,Share,Delete} from '@mui/icons-material';
 import axios from 'axios';
 
 export interface ProjectInformation {
-    id : String,
+    id : string,
     title : string,
     type : string,
     description : string,
@@ -42,7 +42,7 @@ export const ProjectCards = (props : ProjectInformation) => {
 
     return(
         <>
-            <div className='border w-[300px] h-[400px] p-4 shadow bg-white rounded-lg'>
+            <div key={props.id} className='border w-[300px] h-[400px] p-4 shadow bg-white rounded-lg'>
                 <div className="flex justify-between mb-5">
                     <div className='flex items-center gap-2'>
                         {Icon(props)}
