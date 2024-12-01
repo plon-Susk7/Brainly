@@ -1,7 +1,9 @@
 
 import { Twitter,VideoLabel,Article,Share,Delete} from '@mui/icons-material';
+import axios from 'axios';
 
 export interface ProjectInformation {
+    id : String,
     title : string,
     type : string,
     description : string,
@@ -10,6 +12,8 @@ export interface ProjectInformation {
 
 
 export const ProjectCards = (props : ProjectInformation) => {
+
+    const token = localStorage.getItem('authorization');
 
     const Icon = (props : ProjectInformation) =>{
         switch(props.type){
@@ -24,6 +28,17 @@ export const ProjectCards = (props : ProjectInformation) => {
         }
     }
 
+    const deleteContent = async (id : any) => {
+        const response = await axios.delete(`http://localhost:8080/api/v1/content/${id}`,{
+            headers : {
+                'Content-Type' : 'application/json',
+                'authorization' : token
+            }
+        })
+
+        console.log(response);
+    }
+
 
     return(
         <>
@@ -35,7 +50,7 @@ export const ProjectCards = (props : ProjectInformation) => {
                     </div>
                     <div className='flex items-center gap-2'>
                         <Share/>
-                        <Delete/>
+                        <Delete onClick={() => deleteContent(props.id)}/>
                     </div>
                    
                 </div>
