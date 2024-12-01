@@ -1,20 +1,26 @@
 
 import { contentModel } from "../db/schema";
+import moment from "moment";
 
 const addContent = async (req:any,res:any) => {
     const type = req.body.type;
     const link = req.body.link;
     const title = req.body.title;
     const tag = req.body.tag;
+    const description = req.body.description;
+    const date = req.body.date;
+    
 
     const newContent = new contentModel({
         type : type,
         link : link,
         title : title,
         tag : tag,
+        description : description,
+        date : moment(date).format('MM/DD/YYYY'),
         userId : req.userId
     });
-
+    
     try{
         await newContent.save();
         res.status(201).json({message:"Content Added Successfully"});

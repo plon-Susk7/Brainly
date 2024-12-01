@@ -4,12 +4,14 @@ import dotenv from "dotenv";
 import {userRouter} from "./routes/user";
 import {contentRouter} from "./routes/content";
 import { linkRouter } from "./routes/link";
+import cors from 'cors';
 
 import { userAuth } from "./auth";
 
 dotenv.config();
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use("/api/v1",userRouter);
 

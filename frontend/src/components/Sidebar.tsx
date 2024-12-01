@@ -9,7 +9,7 @@ export const Sidebar = () => {
 
     return(
         <>  
-            <div className='p-3 w-1/4 h-screen border '>
+            <div className='p-3 w-1/6 bg-white h-screen border fixed '>
                 <div className='flex gap-2 items-center text-xl font-bold mb-10'>
                     <FontAwesomeIcon icon={faLemon}/>
                     <h1>Second Brain</h1>
