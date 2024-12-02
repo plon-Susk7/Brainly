@@ -1,6 +1,8 @@
 
 import { Twitter,VideoLabel,Article,Share,Delete} from '@mui/icons-material';
 import axios from 'axios';
+import { useSetRecoilState } from 'recoil';
+import { ProjectState } from '../atoms/ProjectAtom';
 
 export interface ProjectInformation {
     id : string,
@@ -12,6 +14,8 @@ export interface ProjectInformation {
 
 
 export const ProjectCards = (props : ProjectInformation) => {
+
+    const setData = useSetRecoilState(ProjectState);
 
     const token = localStorage.getItem('authorization');
 
@@ -29,14 +33,22 @@ export const ProjectCards = (props : ProjectInformation) => {
     }
 
     const deleteContent = async (id : any) => {
-        const response = await axios.delete(`http://localhost:8080/api/v1/content/${id}`,{
+        await axios.delete(`http://localhost:8080/api/v1/content/${id}`,{
             headers : {
                 'Content-Type' : 'application/json',
                 'authorization' : token
             }
         })
 
-        console.log(response);
+        const response = await axios.get(`http://localhost:8080/api/v1/content`,{
+            headers:{
+                'Content-Type' : 'application/json',
+                'authorization' : token
+            }
+        })
+        
+        setData(response.data);
+        
     }
 
 

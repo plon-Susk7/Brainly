@@ -1,10 +1,12 @@
 
 import axios from "axios"
-import {useEffect,useState} from 'react';
+import {useEffect} from 'react';
 import { ProjectCards } from "./ProjectCards"
+import { useRecoilState } from "recoil";
+import { ProjectState } from "../atoms/ProjectAtom";
 
 export const Body = () => {
-    const [data,setData] = useState([]);
+    const [data,setData] = useRecoilState(ProjectState);
 
     const token = localStorage.getItem('authorization');
     const getData = async () => {
