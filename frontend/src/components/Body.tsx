@@ -2,11 +2,14 @@
 import axios from "axios"
 import {useEffect} from 'react';
 import { ProjectCards } from "./ProjectCards"
-import { useRecoilState } from "recoil";
+import { useRecoilState,useRecoilValue } from "recoil";
 import { ProjectState } from "../atoms/ProjectAtom";
+import { FormState } from "../atoms/FormState";
+import { AddContentForm } from "./AddContentForm";
 
 export const Body = () => {
     const [data,setData] = useRecoilState(ProjectState);
+    const formValue = useRecoilValue(FormState);
 
     const token = localStorage.getItem('authorization');
     const getData = async () => {
@@ -28,8 +31,11 @@ export const Body = () => {
     })
 
     return(
-        <div className='flex flex-wrap pl-[16.67%]'>
-            {projects}
-        </div>
+        <>
+            <div className='flex flex-wrap pl-[16.67%]'>
+                {projects}
+            </div>
+            {formValue && <AddContentForm/>}
+        </>
     )
 }

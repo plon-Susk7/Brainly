@@ -27,6 +27,7 @@ export const Button = (props: ButtonProps) => {
         <button
             type='button'
             className={`${baseClass} ${variantClass} ${sizeClass}`}
+            onClick={props.onClick}
         >{props.startIcon && props.startIcon}{props.text}{props.endIcon && props.endIcon}</button>
     </>
 }
