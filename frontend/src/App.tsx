@@ -1,17 +1,17 @@
-
-import { Sidebar } from './components/Sidebar';
-import { Navbar } from './components/Navbar';
 import { Body } from './components/Body';
 import { RecoilRoot } from 'recoil';
 import './App.css'
+import { Login } from './components/Login';
 
 function App() {
+
+  const data = localStorage.getItem('authorization');
+
   return (
     <>
       <RecoilRoot>
-        <Sidebar />
-        <Navbar/>
-        <Body/>
+        {data && <Body/>}
+        {!data && <Login/>}
       </RecoilRoot>
     </>
   )

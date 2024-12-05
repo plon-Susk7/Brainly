@@ -6,6 +6,8 @@ import { useRecoilState,useRecoilValue } from "recoil";
 import { ProjectState } from "../atoms/ProjectAtom";
 import { FormState } from "../atoms/FormState";
 import { AddContentForm } from "./AddContentForm";
+import { Navbar } from "./Navbar";
+import { Sidebar } from "./Sidebar";
 
 export const Body = () => {
     const [data,setData] = useRecoilState(ProjectState);
@@ -32,6 +34,8 @@ export const Body = () => {
 
     return(
         <>
+            <Sidebar/>
+            <Navbar/>
             <div className='flex flex-wrap pl-[16.67%]'>
                 {projects}
             </div>
